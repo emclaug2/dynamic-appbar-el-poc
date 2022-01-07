@@ -1,0 +1,38 @@
+<div class="app-root">
+    <mat-toolbar color="primary" class="mat-elevation-z2 app-toolbar">
+        <button style="margin-left: -8px" mat-icon-button>
+            <mat-icon>menu</mat-icon>
+        </button>
+        <div [style.marginLeft.px]="isSmall() ? 8 : 24">Brightlayer UI Angular</div>
+    </mat-toolbar>
+    <div class="app-body" [style.backgroundColor]="colors.white[50]">
+        <div class="app-body-content">
+          <div id="app-bar-id" class="app-bar-container" style="margin-top: 2rem;">
+            <blui-app-bar #bluiBar
+              expandedHeight="200"
+              collapsedHeight="64"
+              scrollThreshold="100"
+              [scrollContainerId]="id"
+              [scrollContainerClassName]="className"
+              [scrollContainerElement]="element"
+              (collapsedChange)="collapsed = $event"
+              variant="snap"
+            >
+              <blui-three-liner
+                title="W/ Dynamic Content"
+                subtitle="Subtitle"
+                info="Info"
+                [style.top.px]="collapsed ? 0 : 80"
+              >
+              </blui-three-liner>
+            </blui-app-bar>
+            {{ loremIpsum }}
+          </div>
+          <mat-radio-group style="margin-top: 64px" (change)="changeScrollSource($event)">
+            <mat-radio-button value="id" style="margin-right: 24px">Use ID</mat-radio-button>
+            <mat-radio-button value="class" style="margin-right: 24px">Use Class</mat-radio-button>
+            <mat-radio-button value="element">Use Element</mat-radio-button>
+          </mat-radio-group>
+        </div>
+    </div>
+</div>
